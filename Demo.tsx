@@ -37,7 +37,7 @@ const DemoApp = ({navigation}:any) => {
             <Text style={{textAlign:"center",lineHeight:25}}>{cart.count}</Text>
             </View>
           }
-        </Pressable>
+        </Pressable> 
         {products.data?.map((_item: any, index: React.Key | null | undefined) => (
           <View key={index} style={[styles.imgStyle, styles.box]}>
             <Image source={{ uri: _item.image }} style={{ height: 80, width: 80, borderRadius: 10 }} />
@@ -47,7 +47,7 @@ const DemoApp = ({navigation}:any) => {
                 <Text>{_item.price}</Text>
                 <Pressable onPress={() => {dispatch(increaseCount()),dispatch(arrCart(_item))}}
                   style={[{ backgroundColor: "red", padding: 5, marginRight: 10, borderRadius: 10 }, styles.box]}>
-                  <Text style={{ color: 'white', textAlign: "center" }}>Add to cart</Text>
+                  <Text style={{ color: 'white', textAlign: "center", fontSize:18 }}>Add to cart</Text>
                 </Pressable>
               </View>
             </View>
