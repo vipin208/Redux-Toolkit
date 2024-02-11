@@ -1,34 +1,30 @@
 import { View, Text, SafeAreaView, Image, ScrollView, StyleSheet, Platform, Pressable } from 'react-native';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts, resetProducts } from './redux/productSlice';
+import { fetchProducts, resetProducts } from '../redux/productSlice';
 // import { decrement, increment } from './redux/countSlice';
-import Images from './assets';
-import { arrCart, increaseCount } from './redux/addToCartSlice';
-import { useTheme } from './contextApi/darkModeContext';
+import Images from '../../assets';
+import { arrCart, increaseCount } from '../redux/addToCartSlice';
+import { useTheme } from '../contextApi/darkModeContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const DemoApp = ({navigation}:any) => {
   const dispatch = useDispatch();
   const products = useSelector((state) => (state as any).product);
-  const{isDarkMode, toggleTheme, colors}=useTheme()
+  const{isDarkMode,changeColor}=useTheme()
   // const countValue = useSelector((state) => (state as any).countFromStore)
   const cart=useSelector((state)=>(state as any).addTocart)
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
-  const items = [1, 2, 3];
-  console.log(items); 
-  
-  const reversedItems = items.with(1,4);
-  console.log(reversedItems); 
 
 
   return (
-    <SafeAreaView style={{ flex: 1,backgroundColor:colors.background }}>
+    <SafeAreaView style={{ flex: 1,backgroundColor:isDarkMode.backgroundColor }}>
       <ScrollView style={{ marginHorizontal: 10 }}>
-        <Text onPress={() => {dispatch(resetProducts())}}>reset</Text>
-        <Text onPress={toggleTheme}>change color</Text>
+        <Text style={{color:isDarkMode.text}} onPress={() => {dispatch(resetProducts())}}>reset</Text>
+        <Text onPress={changeColor} style={{color:isDarkMode.text}}>change color</Text>
         <Pressable style={{width:"50%",alignSelf:'flex-end'}} onPress={()=>{navigation.navigate("Cart"),console.log('first')}}>
           <Image
             source={Images.cart} style={{ height: 40, width: 40, alignSelf: "flex-end", marginRight: 20 }} />

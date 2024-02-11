@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import DemoApp from '../Demo';
+import DemoApp from '../screen/Demo';
 import Cart from '../screen/cart';
 
 const Stack = createStackNavigator();

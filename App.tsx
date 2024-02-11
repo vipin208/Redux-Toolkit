@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Demo from './Demo'
+import Demo from './src/screen/Demo'
 import { Provider } from 'react-redux'
-import { store } from './redux/store'
+import { store } from './src/redux/store'
 import { NavigationContainer } from '@react-navigation/native'
-import AppNavigation from './navigation/appNavigation'
+import AppNavigation from './src/navigation/appNavigation'
 import 'react-native-gesture-handler';
-import { ThemeProvider } from './contextApi/darkModeContext'
+import { ThemeProvider } from './src/contextApi/darkModeContext'
 const App = () => {
   return (
     <Provider store={store} >
